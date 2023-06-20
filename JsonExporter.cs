@@ -29,7 +29,8 @@ namespace excel2json
         {
             mHeaderRows = headerRows - 1;
             List<DataTable> validSheets = new List<DataTable>();
-            for (int i = 0; i < excel.Sheets.Count; i++)
+            //for (int i = 0; i < excel.Sheets.Count; i++)
+            for (int i = 0; i < 1; i++) // 临时改为只导出第一个sheet
             {
                 DataTable sheet = excel.Sheets[i];
 
@@ -135,6 +136,9 @@ namespace excel2json
                 if (excludePrefix.Length > 0 && columnName.StartsWith(excludePrefix))
                     continue;
 
+                if (columnName.StartsWith("_notExport_"))
+                    continue;
+
                 object value = row[column];
 
                 // 尝试将单元格字符串转换成 Json Array 或者 Json Object
@@ -155,9 +159,11 @@ namespace excel2json
                     }
                 }
 
+                bool bSkip = false;
                 if (value.GetType() == typeof(System.DBNull))
                 {
                     value = getColumnDefault(sheet, column, firstDataRow);
+                    bSkip = true;
                 }
                 else if (value.GetType() == typeof(double))
                 { // 去掉数值字段的“.0”
@@ -181,7 +187,11 @@ namespace excel2json
                 if (string.IsNullOrEmpty(fieldName))
                     fieldName = string.Format("col_{0}", col);
 
-                rowData[fieldName] = value;
+                if (!bSkip)
+                {
+                    rowData[fieldName] = value;
+                }
+                
                 col++;
             }
 

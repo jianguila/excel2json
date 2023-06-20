@@ -50,7 +50,7 @@ namespace excel2json.GUI
             mCSharpTextBox.Language = Language.CSharp;
 
             //-- componet init states
-            this.comboBoxType.SelectedIndex = 0;
+            this.comboBoxType.SelectedIndex = 1;
             this.comboBoxLowcase.SelectedIndex = 1;
             this.comboBoxHeader.SelectedIndex = 1;
             this.comboBoxDateFormat.SelectedIndex = 0;
@@ -347,6 +347,11 @@ namespace excel2json.GUI
         private void btnSaveCSharp_Click(object sender, EventArgs e)
         {
             saveToFile(2, "C# code file(*.cs)|*.cs");
+        }
+
+        private void checkBoxCellJson_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

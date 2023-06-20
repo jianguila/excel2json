@@ -379,12 +379,15 @@
             // checkBoxCellJson
             // 
             this.checkBoxCellJson.AutoSize = true;
+            this.checkBoxCellJson.Checked = true;
+            this.checkBoxCellJson.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxCellJson.Location = new System.Drawing.Point(20, 210);
             this.checkBoxCellJson.Name = "checkBoxCellJson";
             this.checkBoxCellJson.Size = new System.Drawing.Size(186, 16);
             this.checkBoxCellJson.TabIndex = 15;
             this.checkBoxCellJson.Text = "Convert Json String in Cell";
             this.checkBoxCellJson.UseVisualStyleBackColor = true;
+            this.checkBoxCellJson.CheckedChanged += new System.EventHandler(this.checkBoxCellJson_CheckedChanged);
             // 
             // textBoxExculdePrefix
             // 
@@ -474,9 +477,8 @@
             // 
             // comboBoxType
             // 
-            this.comboBoxType.DisplayMember = "0";
+            this.comboBoxType.DisplayMember = "1";
             this.comboBoxType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxType.FormattingEnabled = true;
             this.comboBoxType.Items.AddRange(new object[] {
             "Array",
             "Dict Object"});
@@ -484,7 +486,7 @@
             this.comboBoxType.Name = "comboBoxType";
             this.comboBoxType.Size = new System.Drawing.Size(150, 20);
             this.comboBoxType.TabIndex = 0;
-            this.comboBoxType.ValueMember = "0";
+            this.comboBoxType.ValueMember = "1";
             // 
             // tabControlCode
             // 
