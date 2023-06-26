@@ -111,7 +111,9 @@ namespace excel2json
                 DataRow row = sheet.Rows[i];
                 string ID = row[sheet.Columns[0]].ToString();
                 if (ID.Length <= 0)
-                    ID = string.Format("row_{0}", i);
+                    continue;
+
+               
 
                 var rowObject = convertRowToDict(sheet, row, lowcase, firstDataRow, excludePrefix, cellJson, allString);
                 // 多余的字段
